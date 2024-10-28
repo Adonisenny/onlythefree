@@ -35,8 +35,8 @@ const messageStyle ={
     backgroundColor:theSenderId ===myuserId? '#1e293b':'black',
     borderRadius:'12px',
     padding:'12px',
-   
-    wordWrap:'break-word'
+   width:'160px',
+    wordWrap:'break-all'
    
      
 
@@ -78,7 +78,7 @@ const handleClick = async () => {
     return(
           <div className={`flex ${alignmentClass} mb-2`}>
            <div className="flex flex-col">
-           {deletedPost && <p className='fixed top-[60px] left-[360px] p-2 rounded-md text-black bg-slate-800 text-xs'>message deleted</p>}
+           {deletedPost && <p className='fixed top-[60px] sm:left-[180px] md:left-[360px] p-2 rounded-md text-black bg-slate-800 text-xs'>message deleted</p>}
                 <p className='mb-[3px]' style={messageStyle}>{dm?.Text}</p>
                 <div className="flex gap-6">
                 <p className="text-xs text-gray-400 ">{formatTime(new Date(dm.createdAt))}</p>

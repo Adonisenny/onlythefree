@@ -117,7 +117,7 @@ export const Endtoend =()=> {
         .map((date)=> (
           <div key={date}>
             {/* Date Header */}
-            <h1 className="text-center text-gray-500">{date}</h1>
+            <h1 className="text-center text-xs text-gray-500">{date}</h1>
 
 
 
