@@ -200,6 +200,34 @@ form button {
  }
 
 
+ .chat-window {
+  height: 80vh;               /* Adjust based on the layout */
+  width: 100%;                /* Full width */
+  overflow-y: auto;           /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* Start with messages at the bottom */
+  padding: 20px;
+  background-color: #f4f4f4;  /* Subtle background color */
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;                  /* Space between messages */
+}
+
+.load-more {
+  background-color: #007bff;  /* Button color */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+
+
 
 
 

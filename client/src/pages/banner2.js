@@ -1,5 +1,5 @@
 import { FaEdit,FaEnvelope } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 
 import { useCommentContext } from "../Hooks/useCommentContext";
@@ -7,29 +7,31 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authcontext";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { useConversationContext } from "../Hooks/useConversationContext";
 
 
-const ProfileBanner2 = ({myprofile}) => {
+const ProfileBanner2 = () => {
     const {user} = useContext(AuthContext);
     const{dispatch2} = useCommentContext();
+    const {conversation, dispatch4} =useConversationContext()
+
    
     const [profileDetails, setProfileDetails] = useState()
-     const user_id = user?._id
-     console.log(user_id)
-    // const user_theid =user?.theid
+    const navigate = useNavigate()
+     const userA = user?._id
+   
+  
    
      const idlocation = useLocation()
   
-     const userId = idlocation.pathname.split('/')[2]
-     
+     const userB = idlocation.pathname.split('/')[2]
+console.log(userB)
 
-    
-    useEffect(() => {
+     useEffect(() => {
         const fetchit = async() => {
           
     try {
-            // const response = await axios.get('https://backendrumors.onrender.com/api/profile')
-             const response = await axios.get(`https://backendrumors.onrender.com/api/profile/${userId}`)
+             const response = await axios.get(`https://backendrumors.onrender.com/api/profile/${userB}`)
             const pdetails =  response.data
             setProfileDetails(pdetails)
           
@@ -42,9 +44,45 @@ const ProfileBanner2 = ({myprofile}) => {
            }
         }
         fetchit()
-    },[dispatch2,userId])
+    },[dispatch2,userB])
 
 
+
+     const handleMessageClick=async() => {
+        try{
+        const response = await axios.get(`https://backendrumors.onrender.com/api/conversation/${userA}/${userB}`)
+        const otherJson =response.data
+        console.log(userA,userB)
+        if(otherJson){
+            console.log('conversation found', response.data)
+            dispatch4({type:'CREATE_CONVERSATION',payload:otherJson})
+
+            
+        }else{
+            throw new Error('conversation found')
+        }
+    }catch(error){
+        if(error.response && error.response.status===404){
+            await axios.post('https://backendrumors.onrender.com/api/conversation',{
+                senderId:userA,
+                receiverId:userB
+            })
+            
+            
+
+        }else{
+            console.error('Error Fetching conversation', error)
+        }
+    }
+     
+        navigate(`directmessage/${userA}/${userB}`)
+    
+      }
+     
+
+    
+
+console.log(conversation)
     
 
 
@@ -56,34 +94,15 @@ const ProfileBanner2 = ({myprofile}) => {
 
 <div className="flex flex-col gap-6 items-center justify-center relative ">
     
-{/* <div className="md:hidden">
-{(profileDetails || null ) && profileDetails?.filter(profileDetail => profileDetail?.userId === user_id).map((filteredprofile) =>{
-  return <div key={filteredprofile?._id}> */}
-
- {/* <img src={`https://backendrumors.onrender.com/${filteredprofile?.imageUrl}`} alt="Not seen yet"  className="w-[110px] h-[110px] rounded-[50%]"/> */}
- {/* <img src={`https://localhost:7000/${filteredprofile?.imageUrl}`} alt="Not seen yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
-    <p>{filteredprofile.bio}</p> */}
-    {/* <Link to={`/profilesetup/${user?._id}`} className="text-black absolute top-36 right-[290px] md:right-[660px] "><FaEdit /></Link> */}
-    {/* <Link to='' className="text-black absolute top-36 right-[310px] md:right-[660px] "><FaEnvelope /></Link> */}
-  
-    
-    
-   {/* </div>
-   
-})
-
-} */}
-{/* </div> */}
-
-   {profileDetails?.map((detail) => {
+{profileDetails?.map((detail) => {
     return <div className="text-center" key={detail?._id}> 
     
     <img src={`https://backendrumors.onrender.com/${detail?.imageUrl}`} alt="No Profile yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
 
         <p>{detail?.bio}</p>
 
-          {userId === user_id ?<Link to={`/profilesetup/${user?._id}`} className="text-black absolute top-36  "><FaEdit /></Link>:
-     <Link to='' className="text-black absolute top-36 "><FaEnvelope /></Link>} 
+          {userB === userA ?<Link to={`/profilesetup/${user?._id}`} className="text-black absolute top-36  "><FaEdit /></Link>:
+     <Link className="text-black absolute top-36" onClick={handleMessageClick}><FaEnvelope /></Link>} 
         </div>
    })}
 

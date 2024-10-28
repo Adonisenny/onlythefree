@@ -23,15 +23,45 @@ try {
 }
 }
 
+
+
+
+
+
+export const getConversationIdControl = async(req, res) => {
+    try {
+        const { conversationId } = req.params;
+        console.log(req.params);
+
+        const theconversation = await Conversation.findOne({ _id: conversationId });
+        console.log(theconversation);
+
+        if (!theconversation) {
+            return res.status(404).json({ message: 'Conversation not found' });
+        }
+        res.status(200).json(theconversation);
+    } catch (error) {
+        res.status(500).json({ error: "Conversation not found" });
+    }
+}
+
+
+
+
+
 export const getConversation = async(req,res) => {
     try {
-        const conversations = await Conversation.find({
-            members:{$in:[req.params.userId]}
+        const {userA,userB} =req.params;
+        
+        const conversation = await Conversation.findOne({
+            members:{$all:[new mongoose.Types.ObjectId(userA),new mongoose.Types.ObjectId(userB)]}
         });
-        res.status(200).json(conversations);
+        if(!conversation){
+            return res.status(404).json("No conversation found.")
+        }
+        res.status(200).json(conversation)
     } catch (error) {
-        res.status(500).json({error:error.message})
+        console.log(error)
         
     }
-
 }

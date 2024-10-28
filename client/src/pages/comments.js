@@ -29,7 +29,7 @@ const [isdisabled,setIsDisabled] =useState(false)
        
         try {
             const myComments = {thecomments,postedBy,myid,theId}
-            // const res = await axios.post('https://backendrumors.onrender.com/api/comments',myComments)
+         
             const res = await axios.post('https://backendrumors.onrender.com/api/comments',myComments)
             const otherJson = await res.data
            setTheComments('')
@@ -97,11 +97,7 @@ const [isdisabled,setIsDisabled] =useState(false)
 
 
 
-// Filtering out comments and matching the one that matches with post
-const matchedcomments = comments?.filter(cums =>cums?.myid === locateAccount).map(filteredrumour => {
-    return filteredrumour
-    }
-)
+
 
 
 

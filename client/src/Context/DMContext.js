@@ -10,8 +10,12 @@ export const DMReducer =(state,action) => {
         }
         case 'CREATE_DM':
         return{
-            message:[action.payload, ...state.message]
+            message:[action?.payload, ...state?.message]
         }
+        case 'DELETE_DM':
+            return{
+                message:state?.message?.filter(w => w?._id !== action.payload._id)
+            }
 
         default: return state
 
@@ -20,7 +24,7 @@ export const DMReducer =(state,action) => {
 }
 export const DmContextProvider = ({children})=>{
     const [state,dispatch3] =useReducer(DMReducer,{
-        message:null
+        message:[]
     })
     return(
         <DmContext.Provider value={{...state,dispatch3}}>{children}</DmContext.Provider>

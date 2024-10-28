@@ -11,7 +11,8 @@ import bodyParser from "body-parser";
 import rumorrouter from './routes/rumorroutes.js';
 import messagerouter from './routes/directMessageroutes.js';
 import conversationrouter from './routes/conversationRoutes.js'
-
+import { Server } from "socket.io";
+import http from 'http'
 import commentrouter from './routes/commentRoutes.js';
 import profilerouter from './routes/profileRoutes.js';
 import likesrouter from './routes/likesroutes.js';
@@ -19,6 +20,11 @@ import commentcommentrouter from './routes/commentcommentroutes.js';
 
  // express app
 const app = express()
+
+const server =http.createServer(app)
+const io = new Server(server,{
+  
+})
 app.use(cors({
     // origin:["http://localhost/3000", "https://testingrumors.onrender.com"],
     origin:"*",

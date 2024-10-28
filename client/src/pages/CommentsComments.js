@@ -21,16 +21,16 @@ const handleContent = (e) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
 try {
-    // const myCommentscomments = {content,postedBy,postId}
+    
     
     const response = await axios.post(`https://backendrumors.onrender.com/api/commentcomment/comments`,{
         
     postId,content})
-    // const otherJson = await response.data
+ 
     
     
     setContent('')
-    // dispatch3({type:'CREATE_COMMENTSCOMMENTS',payload:otherJson})
+ 
     
 
     

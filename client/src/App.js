@@ -16,6 +16,8 @@ import CommentsComments from "./pages/CommentsComments";
 import Likes from "./pages/myprofile/Like";
 import Logoutpage from "./pages/logoutpage";
 import Endtoend from "./pages/DirectMessages/endtoend.js";
+import { Conversation } from "./pages/DirectMessages/conversation.js";
+import { TheChat } from "./pages/DirectMessages/Thechat.js";
 
 
 function App() {
@@ -61,6 +63,11 @@ path="/comments/:_id"
 element={<Comments/>}
 
 />
+<Route 
+path="/directmessage/"
+element={<Endtoend/>}
+
+/>
 
 
 <Route 
@@ -82,8 +89,18 @@ element={<Likes/>}
 
 
 <Route 
-path="/directmessage"
+path="/profile/:_id/directmessage/:userA/:userB"
 element={<Endtoend/>}
+
+/>
+<Route 
+path="/conversation"
+element={<Conversation/>}
+
+/>
+<Route 
+path="/thechat"
+element={<TheChat/>}
 
 />
     </Routes>

@@ -8,6 +8,8 @@ import { CommentsContextProvider } from './Context/commentContext';
 
 import { CommentscommentsContextProvider } from './Context/commentcommentcontext';
 import { DmContextProvider } from './Context/DMContext.js';
+import { CoversationContextProvider } from './Context/ConversationContext.js';
+
 
 
 
@@ -18,6 +20,7 @@ root.render(
         <DmContextProvider>
         <CommentsContextProvider>
             <CommentscommentsContextProvider>
+            <CoversationContextProvider>
             
 <AuthContextProvider>
     
@@ -26,10 +29,12 @@ root.render(
 
 
 </AuthContextProvider>
+</CoversationContextProvider>
 </CommentscommentsContextProvider>
 </CommentsContextProvider>
 </DmContextProvider>
     </MyfirstContext>
+   
    
 );
 

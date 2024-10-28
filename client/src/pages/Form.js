@@ -26,7 +26,7 @@ const CreateForm = ({likes}) => {
      const [Error,setError] =useState(null)
    
     
-    // Protecting the form from small words
+    // Protecting the form from few words
      let thelength =story.length
    useEffect(() => {
     if(thelength < 15 || thelength > 150){

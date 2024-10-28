@@ -7,7 +7,7 @@ export const PostMessages = async(req,res) => {
    
 try {
     if(!mongoose.Types.ObjectId.isValid(req.body.conversationId)){
-        return res.status(400).json({error:'invalid conversatioId'})
+        return res.status(400).json({error:'invalid conversationId'})
     }
     if(!mongoose.Types.ObjectId.isValid(req.body.senderId)){
         return res.status(400).json({error:'invalid senderId'})
@@ -36,19 +36,25 @@ export const getMessagecontrols = async(req,res) => {
     }
 
 
-    // export const getMessageControl = async(req,res) => {
-   
-    //     try {
-    //         const theid = req.params.theid
+
+
+    
+    export const deleteDmControls = async(req,res,next) => {
+        try {
+            const id =req.params.id
+            if(!mongoose.Types.ObjectId.isValid){
+                return res.status(404).json({error:"can't delete"})
+            }
+            const deleted = await MyMessage.findByIdAndDelete(id)
+            return res.status(200).json(deleted)
+        } catch (error) {
+            res.status(500).json({error:"message not created"})
             
+        }
+        }
+
+
+
+        
        
-    //        const themessage = await MyMessage.find({theid:theid})
-    //        if(!themessage){
-    //         return res.status(404).json({message:'message not found'})
-    //        }
-    //        res.status(200).json(themessage)
-           
-    //        } catch (error) {
-    //            res.status(500).json({error:"message not found"})
-    //    }
-    // }   
+

@@ -60,7 +60,7 @@ const handleClick = async () => {
     
 
 
-    const ideleted = await deletejson.data
+    const ideleted =  deletejson.data
     
     
      

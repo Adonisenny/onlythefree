@@ -24,7 +24,7 @@ useEffect(() => {
         const response = await axios.get(`https://backendrumors.onrender.com/api/comments/profilecomment/${theId}`)
         
        const comms = await response.data
-       console.log(comms)
+       
       
       setProfComment(comms)
       
