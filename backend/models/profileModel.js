@@ -9,7 +9,7 @@ const profileSchema = new Schema({
   
   imageUrl:{
     type:String,
-    required:true    },
+    },
   userId:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'user',

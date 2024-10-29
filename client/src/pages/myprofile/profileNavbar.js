@@ -55,7 +55,7 @@ useEffect(() => {
   
   
         try {
-        // const response = await axios.get('https://backendrumors.onrender.com/api/profile')
+      
         const response = await axios.get('https://backendrumors.onrender.com/api/profile')
         const pdetails = await response.data
         setProfileDetails(pdetails)

@@ -5,6 +5,7 @@ import { useDmContext } from '../../Hooks/useDmContext'
 import { useConversationContext } from '../../Hooks/useConversationContext';
 import { AuthContext } from '../../Context/authcontext';
 import { SendMessage } from './SendMessage';
+import Navbar from '../Nav';
 
 
 
@@ -111,6 +112,7 @@ export const Endtoend =()=> {
 
   return (
     <div >
+      <Navbar />
       <div style={{ maxHeight: '60vh', overflowY: 'auto', display: 'flex', flexDirection: 'column-reverse' }}>
         {Object?.keys(groupedMessages)
         .sort((a,b) => new Date(b) - new Date(a))
@@ -148,7 +150,7 @@ export const Endtoend =()=> {
           margin='normal'
           onChange={(e) => setText(e.target.value)}
         />
-        <Button type='submit' variant='contained' fullWidth>send</Button>
+        <Button type='submit' variant='contained' color='inherit' fullWidth>send</Button>
       </Box>
     </div>
   

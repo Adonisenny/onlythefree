@@ -6,7 +6,7 @@ import { useLocation, useNavigate} from "react-router-dom";
 const ProfileSetUP = () => {
     const {dispatch2} =useCommentContext()
     const idlocation = useLocation()
-    const userId = idlocation.pathname.split('/')[2]
+    const userId = idlocation.pathname.split('/')[3]
     const [bio,setBio] = useState('')
     const [image,setPImg] = useState('')
     const [error,setError] = useState(false)
@@ -16,7 +16,11 @@ const ProfileSetUP = () => {
     
 const navigate = useNavigate()
     const thebioLength =bio.length;   
-    const handleUploads = async(e) => {
+
+console.log(userId)
+
+const handleUploads = async(e) => {
+    e.preventDefault()
     const formData = new FormData()
     formData.append('bio',bio)
     formData.append('image',image)
@@ -24,16 +28,21 @@ const navigate = useNavigate()
 
 
 try{
-    // const response = await axios.post(' https://backendrumors.onrender.com/api/profile',formData)
-    const response = await axios.post("https://backendrumors.onrender.com/api/profile",formData)
+
+    const response = await axios.post('https://backendrumors.onrender.com/api/profile/',formData)
+
     const otherjson = await response.data
-  
+  console.log(otherjson)
     dispatch2({payload:otherjson})
-    navigate(`/profile/${userId}`)
+     navigate(`/profile/${userId}`)
 }catch(error){
     setError(true)
+    console.error('Error uploading profile:', error.response ? error.response.data : error.message);
 }
     }
+
+
+
     const getCircleBgColor = () => {
         const bioLength = bio.length
         const maxLength = 35
@@ -46,6 +55,13 @@ try{
         
         
     }
+
+
+
+
+
+
+
   
        const handleNext = (e) => {
         e.preventDefault()

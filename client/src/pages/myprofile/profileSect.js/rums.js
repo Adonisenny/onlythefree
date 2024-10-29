@@ -25,6 +25,7 @@ const Rums = () => {
        
 
      },[_id])
+    
 
 
     return (  

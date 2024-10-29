@@ -44,29 +44,37 @@ export const getProfile = async(req,res) => {
 }
 }
 export const updatedProfile = async(req,res,next) => {
-  
+  const userId =req.body.userId
+  const updateData = req.body
 
-    try {
-        const profileId =req.params.id
-       const imageUrl=req.file?.path
+
+   
+        
     
-        const updateProfile = req.body
+        
 
         if(req.file){
-            updateProfile.imageUrl = req.file.path||req.file.location;
+            updateData.imageUrl = req.file.path||req.file.location;
         }
-        const profile = await Profile.findOneAndUpdate(
-            {userId:profileId},
-            // {$set:{imageUrl:updateProfile.imageUrl}},
-           updateProfile,
-            
+
+        try {
+        let profile = await Profile.findOne({userId:userId})
+
+        if(profile){
+        profile = await Profile.findOneAndUpdate(
+            {userId:userId},
+            {$set:updateData},
             {new:true}
-            );
-            if(!profile){
-                return res.status(404).json({message:'profile not found'})
-            }
-            res.status(200).json({profile})
-          
+        );
+        return res.status(200).json({profile,message:'Profile updated'}) 
+        }else {
+            const newProfile = new Profile({
+                userId:userId,
+                ...updateData,
+        })
+        await newProfile.save();
+        return res.status(201).json({profile:newProfile, message:'profile created successfuly'})
+    }     
         
     } catch (error) {
         res.status(500).json({message:'Server Error'})

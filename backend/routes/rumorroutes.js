@@ -16,7 +16,7 @@ router.delete("/:id",deleteRumorControls)
 
 // it is updated
 router.put("/:id/like",updateLikes)
-// router.patch("/:id", UpdateWorkControls)
+
 router.get("/profilerumors/:theId",getProfileRumour )
 
 export default router

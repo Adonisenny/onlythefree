@@ -1,7 +1,5 @@
 import { FaEdit,FaEnvelope } from "react-icons/fa";
 import { Link, useNavigate} from "react-router-dom";
-
-
 import { useCommentContext } from "../Hooks/useCommentContext";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authcontext";
@@ -25,7 +23,7 @@ const ProfileBanner2 = () => {
      const idlocation = useLocation()
   
      const userB = idlocation.pathname.split('/')[2]
-console.log(userB)
+
 
      useEffect(() => {
         const fetchit = async() => {
@@ -47,12 +45,11 @@ console.log(userB)
     },[dispatch2,userB])
 
 
-
      const handleMessageClick=async() => {
         try{
         const response = await axios.get(`https://backendrumors.onrender.com/api/conversation/${userA}/${userB}`)
         const otherJson =response.data
-        console.log(userA,userB)
+        
         if(otherJson){
             console.log('conversation found', response.data)
             dispatch4({type:'CREATE_CONVERSATION',payload:otherJson})
@@ -81,15 +78,7 @@ console.log(userB)
      
 
     
-
-console.log(conversation)
-    
-
-
-
-
-
-    return (  
+ return (  
 
 
 <div className="flex flex-col gap-6 items-center justify-center relative ">
@@ -101,7 +90,7 @@ console.log(conversation)
 
         <p>{detail?.bio}</p>
 
-          {userB === userA ?<Link to={`/profilesetup/${user?._id}`} className="text-black absolute top-36  "><FaEdit /></Link>:
+          {userB === userA ?<Link to={`/profile/profilesetup/${user?._id}`} className="text-black absolute top-36  "><FaEdit /></Link>:
      <Link className="text-black absolute top-36" onClick={handleMessageClick}><FaEnvelope /></Link>} 
         </div>
    })}
