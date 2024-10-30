@@ -26,8 +26,8 @@ const io = new Server(server,{
   
 })
 app.use(cors({
-    // origin:["http://localhost/3000", "https://testingrumors.onrender.com"],
-    origin:"*",
+     origin:["http://localhost/3000", "https://testingrumors.onrender.com"],
+    
     methods:"GET,POST,PUT,DELETE",
     allowedHeaders:"Content-Type,Authorization",
     credentials:true,

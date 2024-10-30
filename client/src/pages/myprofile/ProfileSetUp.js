@@ -17,7 +17,7 @@ const ProfileSetUP = () => {
 const navigate = useNavigate()
     const thebioLength =bio.length;   
 
-console.log(userId)
+
 
 const handleUploads = async(e) => {
     e.preventDefault()
@@ -32,7 +32,7 @@ try{
     const response = await axios.post('https://backendrumors.onrender.com/api/profile/',formData)
 
     const otherjson = await response.data
-  console.log(otherjson)
+
     dispatch2({payload:otherjson})
      navigate(`/profile/${userId}`)
 }catch(error){
@@ -91,7 +91,7 @@ try{
 {steps ===1 && <div>
 <label className="text-center">Bio</label>
 <textarea
-cols='35' rows='3'
+cols='28' rows='4'
 style={{"borderRadius":"12px","color":"white"}}
 className="bg-slate-700"
 

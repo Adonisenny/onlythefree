@@ -11,7 +11,7 @@ import { useConversationContext } from "../Hooks/useConversationContext";
 const ProfileBanner2 = () => {
     const {user} = useContext(AuthContext);
     const{dispatch2} = useCommentContext();
-    const {conversation, dispatch4} =useConversationContext()
+    const { dispatch4} =useConversationContext()
 
    
     const [profileDetails, setProfileDetails] = useState()
@@ -31,8 +31,9 @@ const ProfileBanner2 = () => {
     try {
              const response = await axios.get(`https://backendrumors.onrender.com/api/profile/${userB}`)
             const pdetails =  response.data
+            
+            localStorage.setItem('profile',JSON.stringify(pdetails))
             setProfileDetails(pdetails)
-          
           
             dispatch2({payload:pdetails})
            
@@ -45,6 +46,18 @@ const ProfileBanner2 = () => {
     },[dispatch2,userB])
 
 
+
+    useEffect(()=> {
+        const savedProfile = JSON.parse(localStorage.getItem('profile'));
+        if(savedProfile){
+          dispatch2({payload:savedProfile})
+        }
+    
+    
+      },[])
+        
+
+//function for handling message routing
      const handleMessageClick=async() => {
         try{
         const response = await axios.get(`https://backendrumors.onrender.com/api/conversation/${userA}/${userB}`)
