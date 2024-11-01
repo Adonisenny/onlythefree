@@ -82,9 +82,9 @@ useEffect(() => {
   return <div key={filteredprofile?._id}>
 
 
- {/* <img src={`https://backendrumors.onrender.com/${filteredprofile?.imageUrl}`} alt="Not seen yet"  className="w-[60px] h-[60px] rounded-[50%]"/> */}
- {/* <img src={`https://backendrumors.onrender.com/${filteredprofile?.imageUrl}`} alt="Not seen yet"  className="w-[60px] h-[60px] rounded-[50%]"/>
-     */}
+ 
+ <img src={`https://backendrumors.onrender.com/${filteredprofile?.imageUrl}`} alt="Not seen yet"  className="w-[60px] h-[60px] rounded-[50%]"/>
+
    
   
     

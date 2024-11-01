@@ -26,7 +26,7 @@ const io = new Server(server,{
   
 })
 app.use(cors({
-     origin:["https://onlythefree.onrender.com", "https://testingrumors.onrender.com",],
+     origin:["https://onlythefree.onrender.com"],   //"https://testingrumors.onrender.com"
    
     methods:"GET,POST,PUT,DELETE",
     allowedHeaders:"Content-Type,Authorization",

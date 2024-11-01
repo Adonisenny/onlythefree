@@ -132,6 +132,7 @@ type= "text"
 placeholder="username"
 onChange= {(e) => setUsername(e.target.value)}
 value={username}
+color="white"
 
 
 />
@@ -148,7 +149,7 @@ value={password}
 
 <button onClick={handleSubmit} disabled={isdisabled}>Submit</button>
 <br /> <br />
-{Error &&  <p style={{"backgroundColor":"white","color":"red","paddingLeft":"30px","paddingTop":"15px",'paddingBottom':'15px','borderRadius':'8px'}}>{Error}</p>}
+{Error &&  <p style={{"backgroundColor":"white","color":"red","paddingTop":"15px",'paddingBottom':'15px','borderRadius':'8px text-xs',}}>{Error}</p>}
 <p>If you are registered <Link to='/login' className='loglink'>Login.</Link></p>
 </form>
 

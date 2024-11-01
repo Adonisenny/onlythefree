@@ -57,7 +57,7 @@ const ProfileBanner2 = () => {
         const otherJson =response.data
         
         if(otherJson){
-            console.log('conversation found', response.data)
+          
             dispatch4({type:'CREATE_CONVERSATION',payload:otherJson})
 
             
@@ -81,6 +81,7 @@ const ProfileBanner2 = () => {
         navigate(`directmessage/${userA}/${userB}`)
     
       }
+     
      
 
     
