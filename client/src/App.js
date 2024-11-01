@@ -71,7 +71,7 @@ element={<Endtoend/>}
 
 
 <Route 
-path="profile/profilesetup/:_id"
+path="/profile/profilesetup/:_id"
 element={<ProfileSetUP/>}
 
 />

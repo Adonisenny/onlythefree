@@ -29,7 +29,7 @@ useEffect(()=>{
     if(!mymail){
         setError("your email must include @")
     }else if(!mypassword){
-        setError('password must include numbers')
+        setError('include numbers')
     }else{
         setError('')
     }
@@ -59,7 +59,7 @@ useEffect(()=>{
             
         } catch (error) {
             setError("Something went wrong")
-            // setEmptyField(otherJson.emptyField)
+            
         }
     }
     useEffect(() => {
@@ -127,13 +127,11 @@ value={email}
 />
 
 <input 
-className="myinput rounded-2xl bg-[#333]"
+className="myinput rounded-2xl"
 type= "text"
 placeholder="username"
 onChange= {(e) => setUsername(e.target.value)}
 value={username}
-color="white"
-
 
 />
 
@@ -149,7 +147,7 @@ value={password}
 
 <button onClick={handleSubmit} disabled={isdisabled}>Submit</button>
 <br /> <br />
-{Error &&  <p style={{"backgroundColor":"white","color":"red","paddingTop":"15px",'paddingBottom':'15px','borderRadius':'8px text-xs',}}>{Error}</p>}
+
 <p>If you are registered <Link to='/login' className='loglink'>Login.</Link></p>
 </form>
 
