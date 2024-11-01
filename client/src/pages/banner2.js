@@ -32,7 +32,7 @@ const ProfileBanner2 = () => {
              const response = await axios.get(`https://backendrumors.onrender.com/api/profile/${userB}`)
             const pdetails =  response.data
             
-            localStorage.setItem('profile',JSON.stringify(pdetails))
+           
             setProfileDetails(pdetails)
           
             dispatch2({payload:pdetails})
@@ -47,14 +47,7 @@ const ProfileBanner2 = () => {
 
 
 
-    useEffect(()=> {
-        const savedProfile = JSON.parse(localStorage.getItem('profile'));
-        if(savedProfile){
-          dispatch2({payload:savedProfile})
-        }
-    
-    
-      },[])
+  
         
 
 //function for handling message routing
