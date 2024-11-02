@@ -94,7 +94,7 @@ const ProfileBanner2 = () => {
     return <div className="text-center" key={detail?._id}> 
     
     <img src={`https://backendrumors.onrender.com/${detail?.imageUrl}`} alt="No Profile yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
-
+{console.log(detail?.imageUrl)}
         <p>{detail?.bio}</p>
 
           {userB === userA ?<Link to={`/profile/profilesetup/${user?._id}`} className="text-black absolute top-36  "><FaEdit /></Link>:
