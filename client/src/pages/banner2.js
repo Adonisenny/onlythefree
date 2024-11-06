@@ -91,7 +91,7 @@ const ProfileBanner2 = () => {
 <div className="flex flex-col gap-6 items-center justify-center relative ">
     
 {profileDetails?.map((detail) => {
-    return <div className="text-center" key={detail?._id}> 
+    return <div className="text-center block md:hidden" key={detail?._id} > 
     
     <img src={`https://backendrumors.onrender.com/${detail?.imageUrl}`} alt="No Profile yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
 {console.log(detail?.imageUrl)}

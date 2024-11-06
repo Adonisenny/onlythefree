@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/authcontext";
 import { useNavigate } from "react-router-dom";
-
+import './form.css'
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import Notification from "./Notifications";
+
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 
@@ -15,8 +17,9 @@ const Loginform = () => {
     const [password,setPassword] =useState('')
     const [Error,setError] =useState(null)
     const [poping,setPoping] = useState(false)
+    const [showpassword,setShowPassword] =useState(false)
      const navigate = useNavigate()
-    
+   
 
 
     const handleSubmit = async(e) => {
@@ -28,7 +31,7 @@ const Loginform = () => {
         dispatch({type:"LOGIN_START"})
        
         try {
-            // const res = await axios.post('https://backendrumors.onrender.com/api/auth/login',loginfo)
+          
             const res = await axios.post('https://backendrumors.onrender.com/api/auth/login',loginfo)
              const otherJson =  res.data
            
@@ -57,6 +60,14 @@ const Loginform = () => {
     const closeNotify = () =>{
         setPoping(false)
             }
+
+const handleShow =() => {
+    setShowPassword((prev)=> !prev)
+}
+
+
+
+
     return (  
         <>
          {poping && <Notification message="Logged in successfully!" onClose={closeNotify} />}
@@ -64,34 +75,61 @@ const Loginform = () => {
          
          
          onClose={closeNotify} />}
-<form className="contains">
+
+
+        <Link to='/' className="text-white block">OnlyRumors</Link>
+        
+
+
+<div className="body">
+<div className="container">
     
-    <br /> <br />
-
-<label>Username</label>
+<div className="login-box">
+    <h2>Login</h2>
+<form>
+   
 <input 
-
+className="myinput"
 type= "text"
-placeholder="username"
 onChange= {(e) => setUsername(e.target.value)}
 value={username}
-className="px-[35px] py-[10px] rounded-xl m-0"
+placeholder="Username"
+
 
 />
-<label>Password</label>
+
+ 
 <input 
-className="px-[35px] py-[10px] rounded-xl"
-type="password"
+className="myinput"
+type={showpassword ? 'text':'password'}
 placeholder="password"
+
 onChange= {(e) => setPassword(e.target.value)}
 value={password}
 
 
 />
-<button onClick={handleSubmit}>Submit</button>
+<span 
+onClick={handleShow}
+className="password-toggle-icon left-[440px] top-[45%] md:left-[765px]"
+
+><i>{showpassword ? <FaEyeSlash /> : <FaEye />}</i>
+
+</span>
+         
+<Link onClick={handleSubmit} className="link"><span>
+
+</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit</Link>
+</form>
 {/* {Error &&  <p style={{"backgroundColor":"white","color":"red","paddingLeft":"30px","paddingTop":"15px",'paddingBottom':'15px','borderRadius':'8px'}}>{Error}</p>} */}
 <p>If you are not registered <Link to='/registration' className='reglink'>Register.</Link></p>
-</form>
+</div>
+</div>
+</div>
 </>
 
     );

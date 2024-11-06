@@ -66,8 +66,8 @@ const Home = () => {
 
 
     return ( 
-        <div className="Home   md:grid grid-cols-[3fr,1fr] bg-green-700 bg-opacity-100">
-         <div className="workout-details overflow-y-auto ">
+        <div className="Home   md:grid grid-cols-[3fr,1fr] bg-green-700 bg-opacity-50 ">
+         <div className="workout-details overflow-y-auto " >
          
     {rumors ? <div>{therumours}</div>:<p>loading...</p>}
 
@@ -80,7 +80,7 @@ const Home = () => {
     <SearchBar inputed={inputed} setInputed={setInputed} />
    
     </div>
-    <div className="right-[35px] top-[200px]  bg-slate-800   md:top-[500px] md:right-[476px] fixed w-[47px] h-[47px] rounded-[50%] bg-[#9998a4] opacity-75">
+    <div className="right-[35px] top-[200px]  bg-slate-800   md:top-[500px] md:right-[476px] fixed w-[47px] h-[47px] rounded-[50%] opacity-75">
 <Link to ='/form' >
 <img src='https://cdn.icon-icons.com/icons2/2248/PNG/512/broom_icon_136857.png' alt="broom2" className="h-[42px] w-[42px]"/>
 </Link>

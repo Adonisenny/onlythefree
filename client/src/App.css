@@ -103,7 +103,7 @@ body {
  .workout-details {
   
   color: black;
-  border-radius: 4px;
+ 
  
    height: auto;
    
@@ -180,9 +180,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
-/* .container{
-  text-align: left;
-} */
+
 .contains{
   display: flex;
   flex-direction: column;

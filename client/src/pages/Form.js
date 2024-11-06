@@ -59,7 +59,7 @@ const CreateForm = ({likes}) => {
               dispatch({type:'CREATE_RUMORS',payload:otherJson})
           setError(null)
            setPop(true)
-           console.log(res.statusText)
+        
              if(res.status===200){
                     navigate('/')
                }else{

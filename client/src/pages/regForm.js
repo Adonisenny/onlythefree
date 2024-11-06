@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import Notification from "./Notifications";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Regform = () => {
@@ -16,6 +17,7 @@ const Regform = () => {
     const [isdisabled,setIsdisabled] =useState(true)
     const[allUsername,setAllUsername] =useState('')
     const[pops,setPops] =useState()
+    const[showPassword,setShowPassword] =useState(false)
     const navigate = useNavigate()
    
 const mymail= email.includes('@')
@@ -111,15 +113,30 @@ useEffect(()=> {
             }
 
 
+
+            const handleShow =() => {
+                setShowPassword((prev)=> !prev)
+            }
+
+
     return (
-        <> {pops && <Notification message="Registered successfully!" onClose={closeNotify} />}  
-<form className="contains">
-  
+        <>
+         {pops && <Notification message="Registered successfully!" onClose={closeNotify} />} 
+         <Link to='/' className="text-white block">OnlyRumors</Link>
+
+ <div className="body"> 
+<div className="container">
+<div className="login-box">
+<h2>Register</h2>
+
+
+<form>
+
     
 <input 
-className="myinput rounded-2xl"
+className="myinput"
 type="text"
-placeholder="Email"
+placeholder="email"
 onChange= {(e) => setEmail(e.target.value)}
 value={email}
 
@@ -127,7 +144,7 @@ value={email}
 />
 
 <input 
-className="myinput rounded-2xl"
+className="myinput"
 type= "text"
 placeholder="username"
 onChange= {(e) => setUsername(e.target.value)}
@@ -136,21 +153,42 @@ value={username}
 />
 
 <input 
-className="myinput rounded-2xl"
-type="password"
-placeholder="password must include letters and numbers"
+className="myinput"
+placeholder="password(include numbers)"
 onChange= {(e) => setPassword(e.target.value)}
 value={password}
-
+type={showPassword ? 'text':'password'}
 
 />
+{/*the eyes */}
 
-<button onClick={handleSubmit} disabled={isdisabled}>Submit</button>
-<br /> <br />
+<span 
+onClick={handleShow}
+className="password-toggle-icon left-[400px] top-[50%] md:left-[765px]"
 
-<p>If you are registered <Link to='/login' className='loglink'>Login.</Link></p>
+><i>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
+
+</span>
+
+
+
+
+
+
+<Link onClick={handleSubmit} className="link" disabled={isdisabled}>
+<span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+Submit</Link>
+
+
+<p>If you are registered <Link to='/login' className='reglink'>Login.</Link></p>
 </form>
-
+</div>
+</div>
+</div>
 </>
     );
 }
