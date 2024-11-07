@@ -27,6 +27,9 @@ const Navbar = () => {
       console.log(error)
     }
   }
+
+
+
 useEffect(() => {
   if(!user){
     setIsDisabled(true)
@@ -39,6 +42,10 @@ useEffect(() => {
   const handledisappear = () => {
 
   }
+
+
+
+
 
   
   return (
