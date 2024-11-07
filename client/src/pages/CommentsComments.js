@@ -23,7 +23,7 @@ const handleContent = (e) => {
 try {
     
     
-    const response = await axios.post(`https://backendrumors.onrender.com   /api/commentcomment/comments`,{
+    const response = await axios.post(`https://backendrumors.onrender.com/api/commentcomment/comments`,{
         
     postId,content})
  
@@ -43,7 +43,7 @@ try {
 
 useEffect(() => {
     const fetchcomments = async () => {
-        const res =await axios.get(`https://backendrumors.onrender.com   /api/commentcomment/comments/${postId}`)
+        const res =await axios.get(`https://backendrumors.onrender.com/api/commentcomment/comments/${postId}`)
         const jsonc = await res.data
         dispatch3({type:'SET_COMMENTSCOMMENTS',payload:jsonc})
         

@@ -59,7 +59,7 @@ export const Endtoend =()=> {
       e.preventDefault()
       
         try{
-            const res = await axios.post('https://backendrumors.onrender.com   /api/directmessages',{conversationId,senderId,Text})
+            const res = await axios.post('https://backendrumors.onrender.com/api/directmessages',{conversationId,senderId,Text})
             const otherJson = res.data
             setText('')
             dispatch3({type:'CREATE_DM',payload:otherJson})
@@ -80,7 +80,7 @@ export const Endtoend =()=> {
     
           try {
          
-          const response = await axios.get(`https://backendrumors.onrender.com   /api/directmessages/${conversationId}`)
+          const response = await axios.get(`https://backendrumors.onrender.com/api/directmessages/${conversationId}`)
           
           const otherJson = response.data
           localStorage.setItem('messages',JSON.stringify(otherJson))

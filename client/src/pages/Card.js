@@ -56,7 +56,7 @@ const handleClick = async () => {
   
    
    try {
-    const deletejson = await axios.delete("https://backendrumors.onrender.com   /api/rumors/" + rumor._id)
+    const deletejson = await axios.delete("https://backendrumors.onrender.com/api/rumors/" + rumor._id)
     
 
 
@@ -109,7 +109,7 @@ useEffect(() => {
 const likeHandler = () => {
   
   try {
-    axios.put("https://backendrumors.onrender.com   /api/rumors/" + rumor._id + "/like", { theId: user._id });
+    axios.put("https://backendrumors.onrender.com/api/rumors/" + rumor._id + "/like", { theId: user._id });
   } catch (err) {}
   setLike(isLiked ? like - 1 : like + 1);
   setIsLiked(!isLiked);

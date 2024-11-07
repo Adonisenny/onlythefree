@@ -51,7 +51,7 @@ const CreateForm = ({likes}) => {
         
        
         try {
-            const res = await axios.post('https://backendrumors.onrender.com   /api/rumors',mypost)
+            const res = await axios.post('https://backendrumors.onrender.com/api/rumors',mypost)
     
         const otherJson = await res.data
            

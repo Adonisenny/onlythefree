@@ -32,7 +32,7 @@ const Loginform = () => {
        
         try {
           
-            const res = await axios.post('https://backendrumors.onrender.com   /api/auth/login',loginfo)
+            const res = await axios.post('https://backendrumors.onrender.com/api/auth/login',loginfo)
              const otherJson =  res.data
            
             
