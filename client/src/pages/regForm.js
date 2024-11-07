@@ -164,7 +164,7 @@ type={showPassword ? 'text':'password'}
 
 <span 
 onClick={handleShow}
-className="password-toggle-icon left-[300px] top-[45%] md:left-[765px]"
+className="password-toggle-icon left-[300px] top-[48%] md:left-[765px]"
 
 ><i>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
 
