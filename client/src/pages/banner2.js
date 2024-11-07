@@ -29,7 +29,7 @@ const ProfileBanner2 = () => {
         const fetchit = async() => {
           
     try {
-             const response = await axios.get(`https://backendrumors.onrender.com/api/profile/${userB}`)
+             const response = await axios.get(`https://backendrumors.onrender.com   /api/profile/${userB}`)
             const pdetails =  response.data
             
            
@@ -53,7 +53,7 @@ const ProfileBanner2 = () => {
 //function for handling message routing
      const handleMessageClick=async() => {
         try{
-        const response = await axios.get(`https://backendrumors.onrender.com/api/conversation/${userA}/${userB}`)
+        const response = await axios.get(`https://backendrumors.onrender.com   /api/conversation/${userA}/${userB}`)
         const otherJson =response.data
         
         if(otherJson){
@@ -66,7 +66,7 @@ const ProfileBanner2 = () => {
         }
     }catch(error){
         if(error.response && error.response.status===404){
-            await axios.post('https://backendrumors.onrender.com/api/conversation',{
+            await axios.post('https://backendrumors.onrender.com   /api/conversation',{
                 senderId:userA,
                 receiverId:userB
             })
@@ -93,7 +93,7 @@ const ProfileBanner2 = () => {
 {profileDetails?.map((detail) => {
     return <div className="text-center block md:hidden" key={detail?._id} > 
     
-    <img src={`https://backendrumors.onrender.com/${detail?.imageUrl}`} alt="No Profile yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
+    <img src={`https://backendrumors.onrender.com   /${detail?.imageUrl}`} alt="No Profile yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
 {console.log(detail?.imageUrl)}
         <p>{detail?.bio}</p>
 

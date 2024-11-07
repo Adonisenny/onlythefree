@@ -11,7 +11,7 @@ import Rums from "./profileSect.js/rums"
 import ProfileLike from "./profileSect.js/profileLike"
 import ProfileComments from "./profileSect.js/profileComments"
 
-import ProfileNavbar from "./profileNavbar"
+
 
 
 const Profile = () => {
@@ -51,7 +51,7 @@ const Profile = () => {
         e.preventDefault()
         dispatch({type:"SUCCESS"})
         try {
-          const res = await axios.post(" https://backendrumors.onrender.com/api/auth/logout")
+          const res = await axios.post(" https://backendrumors.onrender.com   /api/auth/logout")
           dispatch({type:"LOGOUT",payload:res.data})
           setMenuOpen(false)
           navigate('/logout')

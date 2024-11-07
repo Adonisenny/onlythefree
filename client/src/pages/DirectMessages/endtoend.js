@@ -5,7 +5,7 @@ import { useDmContext } from '../../Hooks/useDmContext'
 import { useConversationContext } from '../../Hooks/useConversationContext';
 import { AuthContext } from '../../Context/authcontext';
 import { SendMessage } from './SendMessage';
-import Navbar from '../Nav';
+
 
 
 
@@ -59,7 +59,7 @@ export const Endtoend =()=> {
       e.preventDefault()
       
         try{
-            const res = await axios.post('https://backendrumors.onrender.com/api/directmessages',{conversationId,senderId,Text})
+            const res = await axios.post('https://backendrumors.onrender.com   /api/directmessages',{conversationId,senderId,Text})
             const otherJson = res.data
             setText('')
             dispatch3({type:'CREATE_DM',payload:otherJson})
@@ -80,7 +80,7 @@ export const Endtoend =()=> {
     
           try {
          
-          const response = await axios.get(`https://backendrumors.onrender.com/api/directmessages/${conversationId}`)
+          const response = await axios.get(`https://backendrumors.onrender.com   /api/directmessages/${conversationId}`)
           
           const otherJson = response.data
           localStorage.setItem('messages',JSON.stringify(otherJson))
@@ -112,7 +112,7 @@ export const Endtoend =()=> {
 
   return (
     <div >
-      <Navbar />
+      
       <div style={{ maxHeight: '60vh', overflowY: 'auto', display: 'flex', flexDirection: 'column-reverse' }}>
         {Object?.keys(groupedMessages)
         .sort((a,b) => new Date(b) - new Date(a))

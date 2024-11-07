@@ -12,7 +12,7 @@ const Rums = () => {
      useEffect(()=>{
         const fetchmyProfile = async()=> {
             try {
-                const res = await axios.get(`https://backendrumors.onrender.com/api/rumors/profilerumors/${_id}`)
+                const res = await axios.get(`https://backendrumors.onrender.com   /api/rumors/profilerumors/${_id}`)
                 const otherRes =  res.data
                 setMyRumors(otherRes)
                 

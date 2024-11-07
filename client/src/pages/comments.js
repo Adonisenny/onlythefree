@@ -30,7 +30,7 @@ const [isdisabled,setIsDisabled] =useState(false)
         try {
             const myComments = {thecomments,postedBy,myid,theId}
          
-            const res = await axios.post('https://backendrumors.onrender.com/api/comments',myComments)
+            const res = await axios.post('https://backendrumors.onrender.com   /api/comments',myComments)
             const otherJson = await res.data
            setTheComments('')
                dispatch2({type:'CREATE_COMMENTS',payload:otherJson})
@@ -68,7 +68,7 @@ const [isdisabled,setIsDisabled] =useState(false)
       
       
             try {
-            const response = await axios.get(`https://backendrumors.onrender.com/api/comments/${myid}`)
+            const response = await axios.get(`https://backendrumors.onrender.com   /api/comments/${myid}`)
             
             const comms = await response.data
           

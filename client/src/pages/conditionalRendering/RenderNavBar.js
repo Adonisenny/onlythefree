@@ -7,28 +7,31 @@ const RenderNavbar = ({children}) => {
     const [showNavbar,setShowNavbar] = useState(false)
     const locateit = useLocation()
     const profilepath =locateit.pathname.split('/')[1]
-    console.log(profilepath)
+    const messagepath =locateit.pathname.split('/')[3]
+    
+  
     
 
 useEffect(() => {
 
-if(profilepath === 'profile'){
-   
-    setShowNavbar(false)
-}else{
-    setShowNavbar(true)
-}
-},[profilepath])
-useEffect(() => {
-
-    if(profilepath === 'login' || profilepath==='registration'){
+    if(profilepath === 'login' || profilepath==='registration' ||profilepath==='profile'){
        
         setShowNavbar(false)
     }else{
         setShowNavbar(true)
     }
     },[profilepath])
+    useEffect(() => {
 
+        if(messagepath === 'directmessage'){
+           
+            setShowNavbar(false)
+        }else{
+            setShowNavbar(true)
+        }
+        },[messagepath])
+      
+        
    
     
 

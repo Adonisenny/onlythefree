@@ -15,9 +15,9 @@ export const Conversation = () => {
   const userA = user?._id
   const userB = userId
   // const handleMessageClick=async() => {
-  //   const response = await axios.get(`https://backendrumors.onrender.com/api/conversation/${userA}/${userB}`)
+  //   const response = await axios.get(`https://backendrumors.onrender.com   /api/conversation/${userA}/${userB}`)
   //   if(!response.data){
-  //       await axios.post('https://backendrumors.onrender.com/api/conversation',{
+  //       await axios.post('https://backendrumors.onrender.com   /api/conversation',{
   //           senderId:userA,
   //           receiverId:userB
   //       })
@@ -27,7 +27,7 @@ export const Conversation = () => {
   // }
 
   useEffect(() => {
-    const res = axios.get('https://backendrumors.onrender.com/')
+    const res = axios.get('https://backendrumors.onrender.com   /')
   })
 
     return(

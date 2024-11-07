@@ -19,7 +19,7 @@ const CommentCommentContent = ({commentcomment}) => {
     
     const likeHandler = () => {
         try {
-          axios.put("https://backendrumors.onrender.com/api/comments/" + commentcomment?._id + "/like", { myid: user._id });
+          axios.put("https://backendrumors.onrender.com   /api/comments/" + commentcomment?._id + "/like", { myid: user._id });
         } catch (err) {}
         setLike(isLiked ? like - 1 : like + 1);
         setIsLiked(!isLiked);
@@ -27,7 +27,7 @@ const CommentCommentContent = ({commentcomment}) => {
       const handleDelete = async() => {
         
         try {
-             const trydelete = await axios.delete('https://backendrumors.onrender.com/api/comments/' + commentcomment?._id)
+             const trydelete = await axios.delete('https://backendrumors.onrender.com   /api/comments/' + commentcomment?._id)
              const deletedComments =await trydelete.data
             
              dispatch3({type:'DELETE_COMMENTSCOMMENTS', payload:deletedComments})

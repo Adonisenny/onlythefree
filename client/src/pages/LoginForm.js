@@ -32,7 +32,7 @@ const Loginform = () => {
        
         try {
           
-            const res = await axios.post('https://backendrumors.onrender.com/api/auth/login',loginfo)
+            const res = await axios.post('https://backendrumors.onrender.com   /api/auth/login',loginfo)
              const otherJson =  res.data
            
             
@@ -111,7 +111,7 @@ value={password}
 />
 <span 
 onClick={handleShow}
-className="password-toggle-icon left-[380px] top-[45%] md:left-[765px]"
+className="password-toggle-icon left-[300px] top-[50%] md:left-[765px]"
 
 ><i>{showpassword ? <FaEyeSlash /> : <FaEye />}</i>
 

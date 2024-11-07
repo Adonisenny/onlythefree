@@ -46,7 +46,7 @@ const handleClick = async () => {
   
    
     try {
-     const deletejson = await axios.delete("https://backendrumors.onrender.com/api/directmessages/" + dm?._id)
+     const deletejson = await axios.delete("https://backendrumors.onrender.com   /api/directmessages/" + dm?._id)
      
  
  

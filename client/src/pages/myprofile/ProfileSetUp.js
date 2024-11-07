@@ -29,7 +29,7 @@ const handleUploads = async(e) => {
 
 try{
 
-    const response = await axios.post('https://backendrumors.onrender.com/api/profile/',formData)
+    const response = await axios.post('https://backendrumors.onrender.com   /api/profile/',formData)
 
     const otherjson = await response.data
 
