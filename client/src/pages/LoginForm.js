@@ -111,7 +111,7 @@ value={password}
 />
 <span 
 onClick={handleShow}
-className="password-toggle-icon left-[308px] top-[49%] md:top-[45%] md:left-[765px]"
+className="password-toggle-icon left-[308px] top-[48%] md:top-[45%] md:left-[765px]"
 
 ><i>{showpassword ? <FaEyeSlash /> : <FaEye />}</i>
 
