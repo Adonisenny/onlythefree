@@ -113,7 +113,7 @@ body {
   padding-right: 20px;
   
   position: relative;
-   box-shadow: 1px 1px 5px rgba(0,0,0,0.8); 
+   box-shadow: 1px 1px 1px rgba(0,0,0,0.8); 
   
   border-radius: 14px;
 }
@@ -212,10 +212,28 @@ form button {
 .messages {
   display: flex;
   flex-direction: column;
-  gap: 10px;                  /* Space between messages */
+  gap: 10px;
+                    /* Space between messages */
 }
+.thecontainer{
+  cursor: pointer;
+}
+.trash{
+  display: none;
+  position: absolute;
+  bottom: 72%; /* Position above the hovered item */
+  font-size: small;
 
+  background-color: #333;
 
+  padding: 10px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+  color: red;
+}
+.thecontainer:hover .trash{
+  display: block;
+}
 
 
 
