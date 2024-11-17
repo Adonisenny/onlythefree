@@ -9,7 +9,7 @@ if(!isOpen) return null
 <div className='relative'>
 <button 
 onClick={onClose}
-className='absolute top-2 right-2 bg-white rounded-full p-2 text-black hover:bg-gray-300  cursor-pointer'
+className='absolute top-2 sm:left-0 md:left-24  bg-white rounded-full p-2 text-black hover:bg-gray-300  cursor-pointer'
 >
    <FaTimes color='red' size='20px' />
 
@@ -20,7 +20,7 @@ className='absolute top-2 right-2 bg-white rounded-full p-2 text-black hover:bg-
 <img 
 src={imageUrl}
 alt='Full size'
-className='max-w-full max-h-full object-contain'
+className='w-2/3 md:max-w-full max-h-full object-contain'
 /> 
   </div>
 

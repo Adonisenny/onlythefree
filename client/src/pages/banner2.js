@@ -1,4 +1,4 @@
-import { FaEdit,FaEnvelope } from "react-icons/fa";
+import { FaEdit,FaEnvelope, FaHome } from "react-icons/fa";
 import { Link, useNavigate} from "react-router-dom";
 import { useCommentContext } from "../Hooks/useCommentContext";
 import { useContext, useEffect, useState } from "react";
@@ -86,8 +86,8 @@ const ProfileBanner2 = () => {
 
     
  return (  
-
-
+<>
+<Link to='/' className="text-white hidden md:block">OnlytheFree</Link>
 <div className="flex flex-col gap-6 items-center justify-center relative ">
     
 {profileDetails?.map((detail) => {
@@ -120,7 +120,7 @@ const ProfileBanner2 = () => {
 
 
 </div>
-
+</>
 
     );
 }

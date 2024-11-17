@@ -69,7 +69,7 @@ useEffect(()=>{
               
               
                     try {
-                    const response = await axios.get(' https://backendrumors.onrender.com/api/auth/users')
+                    const response = await axios.get('https://backendrumors.onrender.com/api/auth/users')
                     const allusers = await response.data
                    
                     setAllUsername(allusers)
