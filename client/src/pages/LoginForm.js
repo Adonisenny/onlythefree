@@ -77,7 +77,7 @@ const handleShow =() => {
          onClose={closeNotify} />}
 
 
-        <Link to='/' className="text-white block">OnlyRumors</Link>
+        <Link to='/' className="text-white block">OnlytheFree</Link>
         
 
 

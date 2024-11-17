@@ -219,21 +219,14 @@ form button {
   cursor: pointer;
 }
 .trash{
-  display: none;
-  position: absolute;
-  bottom: 72%; /* Position above the hovered item */
-  font-size: small;
+  
 
-  background-color: #333;
+   /* Position above the hovered item */
 
-  padding: 10px 10px;
-  border-radius: 10px;
-  white-space: nowrap;
-  color: red;
+ 
 }
-.thecontainer:hover .trash{
-  display: block;
-}
+
+
 
 
 

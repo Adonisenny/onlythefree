@@ -6,23 +6,23 @@ import { AuthContext } from "../Context/authcontext";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useConversationContext } from "../Hooks/useConversationContext";
+import ImageModal from "./myprofile/Modal";
 
 
 const ProfileBanner2 = () => {
     const {user} = useContext(AuthContext);
     const{dispatch2} = useCommentContext();
     const { dispatch4} =useConversationContext()
-
+    const [isModalOpen,setIsModalOpen] =useState(false)
    
     const [profileDetails, setProfileDetails] = useState()
     const navigate = useNavigate()
      const userA = user?._id
-   
-  
-   
      const idlocation = useLocation()
-  
      const userB = idlocation.pathname.split('/')[2]
+
+
+     const toggleModal =() => setIsModalOpen(!isModalOpen)
 
 
      useEffect(() => {
@@ -91,10 +91,26 @@ const ProfileBanner2 = () => {
 <div className="flex flex-col gap-6 items-center justify-center relative ">
     
 {profileDetails?.map((detail) => {
-    return <div className="text-center block md:hidden" key={detail?._id} > 
+    return <div className="text-center " key={detail?._id} > 
     
-    <img src={`https://backendrumors.onrender.com/${detail?.imageUrl}`} alt="No Profile yet"  className="w-[110px] h-[110px] rounded-[50%]"/>
+    <img src={`https://backendrumors.onrender.com/${detail?.imageUrl}`}
+     alt="No Profile yet"  
+     className="w-[110px] h-[110px] rounded-full shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer"
+    onClick={toggleModal}
+    
+    
+    />
+    <ImageModal
+    isOpen={isModalOpen}
+    onClose={toggleModal}
+    imageUrl={`https://backendrumors.onrender.com/${detail?.imageUrl}`}
+   
+
+    
+    />
 {console.log(detail?.imageUrl)}
+
+
         <p>{detail?.bio}</p>
 
           {userB === userA ?<Link to={`/profile/profilesetup/${user?._id}`} className="text-black absolute top-36  "><FaEdit /></Link>:

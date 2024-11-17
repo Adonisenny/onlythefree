@@ -14,22 +14,22 @@ const RenderNavbar = ({children}) => {
 
 useEffect(() => {
 
-    if(profilepath === 'login' || profilepath==='registration' ||profilepath==='profile'){
+    if(profilepath === 'login' || profilepath==='registration' ||profilepath==='profile' || messagepath ==='directmessage'){
        
         setShowNavbar(false)
     }else{
         setShowNavbar(true)
     }
-    },[profilepath])
-    useEffect(() => {
+    },[profilepath,messagepath])
+    // useEffect(() => {
 
-        if(messagepath === 'directmessage'){
+    //     if(messagepath === 'directmessage'){
            
-            setShowNavbar(false)
-        }else{
-            setShowNavbar(true)
-        }
-        },[messagepath])
+    //         setShowNavbar(false)
+    //     }else{
+    //         setShowNavbar(true)
+    //     }
+    //     },[messagepath])
       
         
    

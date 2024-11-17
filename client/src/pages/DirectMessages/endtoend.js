@@ -5,6 +5,8 @@ import { useDmContext } from '../../Hooks/useDmContext'
 import { useConversationContext } from '../../Hooks/useConversationContext';
 import { AuthContext } from '../../Context/authcontext';
 import { SendMessage } from './SendMessage';
+import { Link } from 'react-router-dom';
+import { FaHome } from 'react-icons/fa';
 
 
 
@@ -111,8 +113,12 @@ export const Endtoend =()=> {
   const groupedMessages = groupMessagesByDate(message);
 
   return (
+    <>
+    <Link to='/' className=" text-white"><FaHome size='20px' /> </Link>
     <div >
       
+    
+     
       <div style={{ maxHeight: '60vh', overflowY: 'auto', display: 'flex', flexDirection: 'column-reverse' }}>
         {Object?.keys(groupedMessages)
         .sort((a,b) => new Date(b) - new Date(a))
@@ -153,6 +159,7 @@ export const Endtoend =()=> {
         <Button type='submit' variant='contained' color='inherit' fullWidth>send</Button>
       </Box>
     </div>
+    </>
   
   )
 }

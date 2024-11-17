@@ -5,6 +5,7 @@ import { AuthContext } from "../../Context/authcontext.js";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ProfileNavbar from "../myprofile/profileNavbar.js";
 
 
 
@@ -76,6 +77,7 @@ const handleClick = async () => {
 
 
     return(
+        <>
           <div className={`flex ${alignmentClass} mb-2`}>
            <div className="flex flex-col thecontainer">
            {deletedPost && <p className='fixed top-[60px] sm:left-[150px] md:left-[360px] p-2 rounded-md text-black bg-slate-800 text-xs'>message deleted</p>}
@@ -83,12 +85,13 @@ const handleClick = async () => {
                 <div className="flex gap-6">
                 <p className="text-xs text-gray-400 ">{formatTime(new Date(dm.createdAt))}</p>
                 {!isDisabled && (
-               <Link onClick={handleClick}> <p className="trash">Delete</p></Link>)}
+               <Link onClick={handleClick}><FaTrash color="grey" size='12px' className="mt-[3px]"/></Link>)}
                 </div>
                 
                 </div>
                
             </div>
+            </>
 
           
       

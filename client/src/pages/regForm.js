@@ -122,7 +122,7 @@ useEffect(()=> {
     return (
         <>
          {pops && <Notification message="Registered successfully!" onClose={closeNotify} />} 
-         <Link to='/' className="text-white block">OnlyRumors</Link>
+         <Link to='/' className="text-white block">OnlytheFree</Link>
 
  <div className="body"> 
 <div className="container">

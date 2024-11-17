@@ -67,7 +67,7 @@ const Profile = () => {
    
     return ( 
       <div className="m-0">
-        <Link to='/' className="text-white block md:hidden">OnlyRumors</Link>
+        <Link to='/' className="text-white block md:hidden">OnlytheFree</Link>
      
        
        {/* The banner */}
