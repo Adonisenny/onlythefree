@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { FaComment,  FaTrash,FaThumbsUp } from "react-icons/fa";
+
+import { FaTrash,FaThumbsUp } from "react-icons/fa";
 import axios from "axios";
 import { useCommentContext } from "../Hooks/useCommentContext";
 import { useContext, useEffect, useState } from "react";

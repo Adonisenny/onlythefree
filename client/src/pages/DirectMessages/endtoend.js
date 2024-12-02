@@ -5,8 +5,8 @@ import { useDmContext } from '../../Hooks/useDmContext'
 import { useConversationContext } from '../../Hooks/useConversationContext';
 import { AuthContext } from '../../Context/authcontext';
 import { SendMessage } from './SendMessage';
-import { Link } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
+import { FaArrowLeft, FaHome } from 'react-icons/fa';
 
 
 
@@ -46,9 +46,10 @@ export const Endtoend =()=> {
      const {conversation} =useConversationContext()
      const {user} = useContext(AuthContext)
      const {message =[],dispatch3}=useDmContext();
-
+     const idlocation = useLocation()
      const conversationId =conversation[0]?._id
      const senderId = user?._id
+     const userId = idlocation.pathname.split('/')[2]
 
 
      
@@ -114,7 +115,7 @@ export const Endtoend =()=> {
 
   return (
     <>
-    <Link to='/' className=" text-white"><FaHome size='20px' /> </Link>
+    <Link to={`/profile/${userId}`} className=" text-white"><FaArrowLeft /> </Link>
     <div >
       
     
