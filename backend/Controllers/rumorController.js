@@ -32,7 +32,7 @@ try {
          }
          const myRumor = await Rumor.findById(id)
          if(!myRumor){
-             res.json(400).json({error: "no such error"})
+             res.status(400).json({error: "no such error"})
          }
          res.status(200).json(myRumor)
          }
