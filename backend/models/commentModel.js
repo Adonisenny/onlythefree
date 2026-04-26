@@ -1,31 +1,28 @@
 import mongoose from "mongoose"
 const Schema = mongoose.Schema
 const commentSchema = new Schema({
+    postId:{
+        type:String,
+        require:true,
+    
+    },
+    userId:{
+        type:String,
+        required:true,
+    },
     thecomments:{
-        type:String,
-        required:true,
-        
-
-    },
-    postedBy: {
-        type:String,
-         required:true
-
-    },
-    myid:{
-        type:String,
-        required:true,
-        
-
-    },
-    theId:{
-        type:String,
+        type:String
         
     },
-    likes:{
-        type:Array,
-        default:[]
+    parentId: {
+        type:String,
+         default:null
+
     },
+    postedBy:{
+        type:String
+    },
+
    
    
 },{timestamps:true})

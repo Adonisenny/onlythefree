@@ -7,16 +7,18 @@ import {useLocation } from 'react-router-dom';
 import CommentContent from "./commentContent";
 
 
+
 const Comments = ({slicedcomms}) => {
 const{comments,dispatch2}=useCommentContext()
 const location =useLocation()
 const locateAccount = location.pathname.split('/')[2]
 const  {user} = useContext(AuthContext)
 const [thecomments,setTheComments] =useState('')
-const [myid,setMyId] = useState(locateAccount)
+const [postId,setPostId] = useState(locateAccount)
 const postedBy = user?.username
-const theId = user?._id
+const userId= user?._id
 const [isdisabled,setIsDisabled] =useState(false)
+const [activereplyid,setActiveReplyid] =useState(null)
 
                        
     
@@ -28,7 +30,7 @@ const [isdisabled,setIsDisabled] =useState(false)
        }
        
         try {
-            const myComments = {thecomments,postedBy,myid,theId}
+            const myComments = {thecomments,postedBy,postId,userId}
          
             const res = await axios.post('https://backendrumors.onrender.com/api/comments',myComments)
             const otherJson = await res.data
@@ -41,11 +43,6 @@ const [isdisabled,setIsDisabled] =useState(false)
            
         }
     }
-    
-
-
-
-
 
 
 
@@ -59,6 +56,21 @@ const [isdisabled,setIsDisabled] =useState(false)
            }
        },[thelength,postedBy])
 
+
+
+       const Comment = ({ comment }) => {
+  return (
+    <div style={{ marginLeft: "20px" }}>
+      <p>{comment.text}</p>
+
+      {/* replies */}
+      {comment.children.map(child => (
+        <Comment key={child._id} comment={child} />
+      ))}
+    </div>
+  );
+};
+
       
 
 
@@ -68,12 +80,13 @@ const [isdisabled,setIsDisabled] =useState(false)
       
       
             try {
-            const response = await axios.get(`https://backendrumors.onrender.com/api/comments/${myid}`)
+            const response = await fetch(`https://backendrumors.onrender.com/api/comments/${postId}`)
             
-            const comms = await response.data
+            const comms = await response.json()
           
          
              dispatch2({type:'SET_COMMENTS',payload:comms})
+             console.log(comms)
            
         
            } catch (error) {
@@ -81,26 +94,9 @@ const [isdisabled,setIsDisabled] =useState(false)
            }
         }
         fetchit()
-    },[dispatch2,myid])
+    },[dispatch2,postId])
     
    
-
-    
-   
-
-
-
-// stamp date
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -109,6 +105,7 @@ const [isdisabled,setIsDisabled] =useState(false)
 
     return ( 
         <div className="mt-8">
+          {activereplyid==null &&
         <form className="text-center ">
 <textarea  
 
@@ -121,14 +118,14 @@ style={{"borderRadius":"4px","color":"white"}}
 <br />
 <button onClick={handleSubmit}  disabled={isdisabled} className=" text-[10px] ">comment</button>
 
-</form>
+</form>}
 <br />
 
 
 <div className="workout-details"> 
  {comments?.map((comment) => (
     
-<CommentContent comment={comment}/>
+<CommentContent comment={comment} key={comment?._id} setActiveReplyid={setActiveReplyid} activereplyid={activereplyid}/>
 ))}
 </div>
 </div>

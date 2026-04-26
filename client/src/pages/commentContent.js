@@ -1,12 +1,11 @@
-
 import { FaTrash,FaThumbsUp } from "react-icons/fa";
 import axios from "axios";
 import { useCommentContext } from "../Hooks/useCommentContext";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authcontext";
+import { FaComment } from "react-icons/fa";
 
-
-const CommentContent = ({comment}) => {
+const CommentContent = ({comment,setActiveReplyid,activereplyid}) => {
 
   const{dispatch2}=useCommentContext()
   const  {user} = useContext(AuthContext)
@@ -15,8 +14,43 @@ const CommentContent = ({comment}) => {
   const [color,setColor] = useState(false)
   const [isdisabled,setIsDisabled] =useState(false)
   const [deletedPost,SetDeletedPost] = useState(false)
+  const[showReplies,setShowReply] =useState(false)
   const myusername = user?.username
+  
+const [replyText,setReplyText]  =useState('')
 
+     const mystyle ={
+        backgroundColor:"#0F172A",
+        borderRadius:'12px'
+        
+      }
+      const mystyles ={
+        backgroundColor:"",
+        color:'#292524'
+      
+      }
+
+//Handlesubmit
+const HandleSubmitR= async(e) => {
+e.preventDefault()
+await axios.post("https://backendrumors.onrender.com/api/comments",{
+  postId:comment?.postId,
+  userId:user?._id,
+  thecomments:replyText,
+  parentId:comment?._id,
+  postedBy:myusername
+
+})
+setReplyText('')
+setActiveReplyid(null)
+
+}
+
+//handleReply
+
+const HandleReply = () => {
+  setActiveReplyid(comment?._id)
+}
 //like function
 
     const likeHandler = () => {
@@ -47,19 +81,14 @@ const CommentContent = ({comment}) => {
          }
         }
      }
-const handleClick3 = (id) => {}
 
 
-     const mystyle ={
-        backgroundColor:"#0F172A",
-        borderRadius:'12px'
-        
-      }
-      const mystyles ={
-        backgroundColor:"",
-        color:'#292524'
-      
-      }
+
+
+
+
+
+
       useEffect(() => {
         setIsLiked(comment?.likes?.includes(user?._id));
       }, [user?._id, comment?.likes]);
@@ -79,6 +108,11 @@ const handleClick3 = (id) => {}
           setColor(false)
         }
       },[like])
+
+
+
+
+
       // comment date
       const inputDate = comment?.updatedAt.slice(0,10);
       const date = new Date(inputDate);
@@ -92,25 +126,62 @@ const handleClick3 = (id) => {}
       const year = date.getFullYear().toString().slice(2);
       
       // Combine the parts into the desired format
+
+
+
         
     
     return (  
-      <div>
-      
+      <div className= "cursor-pointer" onClick={()=> setShowReply(prev => !prev)} >
+      {activereplyid==null &&
       <div className='workout-details2' >
       {deletedPost && <p className='fixed top-[60px] left-[360px] p-2 rounded-md text-black bg-slate-800'>comment deleted</p>}
 
-        <i className="absolute  right-[12px] bottom-[1px] bg-slate-800 rounded-[12px] p-[4px] text-white">@{comment?.postedBy}</i>
+        <i className="absolute  right-[12px] bottom-[1px]  bg-slate-800 rounded-[12px] p-[4px] text-white">@{comment?.postedBy}</i>
         <p>{comment?.thecomments}</p> 
        <br/>
    
-      <span className='span2' style={color ? mystyle:mystyles}><button onClick={likeHandler}><FaThumbsUp size={14}   style={color ? mystyle:mystyles} /></button></span>
+      <span className='span2' style={color ? mystyle:mystyles}><button onClick={likeHandler}><FaThumbsUp size={14} style={color ? mystyle:mystyles} /></button></span>
      <p className="absolute left-[38px] bottom-2">{like}</p>
     
       <span> <button  onClick={handleDelete} disabled={isdisabled} ><FaTrash size={14}  className="text-stone-800" /></button></span>
-      {/* <Link to={`/comments/${comment?.myid}/commentscomments/${comment._id}`} className="absolute left-[99px] bottom-[13px] text-white"  onClick={() => handleClick3(comment._id)} ><FaComment size={14}  className="text-stone-800"/></Link> */}
+
+
+
+      <button onClick={(e)=>{e.stopPropagation(); HandleReply()}}  className="absolute left-[45px] bottom-[12px]" ><FaComment size={14}  className="text-stone-800"/></button>
       <p className="absolute bottom-[7px] left-[130px]">{`${day} ${monthName} ${year}`}</p>
+    </div>}
+
+{ activereplyid==comment?._id &&
+
+     <form className="text-center" onSubmit={HandleSubmitR}>
+
+ <textarea  
+
+className=" bg-slate-800 text-red rounded-[12px] h-[80px] w-[185px] md:w-[350px]"
+value={replyText}
+onChange={(e)=>setReplyText(e.target.value)}
+style={{"borderRadius":"4px","color":"white"}}
+>
+</textarea>
+<br />
+<div className="flex justify-center">
+<button type="submit"  disabled={isdisabled} className="text-[10px] bg-slate-800 text-white" >comment</button>
+</div>
+</form>
+}
+
+
+<br />
+{showReplies && comment.children?.length >0 && (
+    <div style={{marginLeft:"20px"}}>
+<div>
+      {comment.children?.map(child=> (
+        <CommentContent key={child._id} comment={child}  />
+      ))}
+      </div>
     </div>
+)}
        </div>
 
         

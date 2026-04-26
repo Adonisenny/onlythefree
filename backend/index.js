@@ -21,17 +21,17 @@ import commentcommentrouter from './routes/commentcommentroutes.js';
  // express app
 const app = express()
 
-const server =http.createServer(app)
-const io = new Server(server,{
-  
-})
+
 app.use(cors({
-     origin:["https://onlythefree.onrender.com"],
-    //  origin:"*",
-   
-    methods:"GET,POST,PUT,DELETE",
+    origin:[
+    "https://backendrumors.onrender.com",
+    "http://localhost:3000"
+       
+    ],
+     methods:"GET,POST,PUT,DELETE",
     allowedHeaders:"Content-Type,Authorization",
-    credentials:true,
+    credentials:true
+
 }))
 const upload = multer({dest:'uploads/'})
 dotenv.config()
@@ -67,15 +67,15 @@ app.get("/", (req,res,next)=>{
 
 
 const buildPath = path.join(process.cwd(), 'client', 'build');
-  // Define a catch-all route that serves index.html for all routes
+ // Define a catch-all route that serves index.html for all routes
 app.use(express.static(buildPath))
   app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-  });
+ res.sendFile(path.join(buildPath, 'index.html'));
+ });
   //Error handling
-  app.use((err,req,res)=> {
-    res.status(err.status || 500).json({error:err.message})
-  })
+ app.use((err,req,res)=> {
+   res.status(err.status || 500).json({error:err.message})
+   })
 
 mongoose.connect(process.env.MONGO)
 .then(() => {
