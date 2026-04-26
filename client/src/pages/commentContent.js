@@ -33,7 +33,7 @@ const [replyText,setReplyText]  =useState('')
 //Handlesubmit
 const HandleSubmitR= async(e) => {
 e.preventDefault()
-await axios.post("https://backendrumors.onrender.com/api/comments",{
+await axios.post(`${process.env.REACT_APP_API_URL}/api/comments`,{
   postId:comment?.postId,
   userId:user?._id,
   thecomments:replyText,
@@ -55,7 +55,7 @@ const HandleReply = () => {
 
     const likeHandler = () => {
         try {
-          axios.put("https://backendrumors.onrender.com/api/comments/" + comment?._id + "/like", { postId: user._id });
+          axios.put(`${process.env.REACT_APP_API_URL}/api/comments/` + comment?._id + "/like", { postId: user._id });
         } catch (err) {}
         setLike(isLiked ? like - 1 : like + 1);
         setIsLiked(!isLiked);
@@ -67,7 +67,7 @@ const HandleReply = () => {
 
     if(wannadelete === true){
         try {
-             const trydelete = await axios.delete('https://backendrumors.onrender.com/api/comments/' + comment?._id)
+             const trydelete = await axios.delete(`${process.env.REACT_APP_API_URL}/api/comments/` + comment?._id)
 
              const deletedComments =await trydelete.data
             if(trydelete.status ===200){
@@ -152,7 +152,7 @@ const HandleReply = () => {
       <p className="absolute bottom-[7px] left-[130px]">{`${day} ${monthName} ${year}`}</p>
     </div>}
 
-{ activereplyid==comment?._id &&
+{ activereplyid===comment?._id &&
 
      <form className="text-center" onSubmit={HandleSubmitR}>
 

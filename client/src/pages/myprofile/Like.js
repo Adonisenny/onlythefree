@@ -13,7 +13,7 @@ const Likes = () => {
     useEffect(() => {
 const fetchIt = async() => {
    try {
-    const res = await axios.get(`https://backendrumors.onrender.com/api/profile/likes/${userId}`)
+    const res = await axios.get(`REACT_APP_API_URL/api/profile/likes/${userId}`)
    
    } catch (error) {
     console.log('can not not get the data')

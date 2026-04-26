@@ -23,8 +23,8 @@ const Home = () => {
     useEffect(() => {
         const fetchit = async() => {
            try {
-            const response = await fetch("https://backendrumors.onrender.com/api/rumors")
-           
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/rumors`)
+           console.log(response)
             const newrumors = await response.json()
             
            dispatch({type:'SET_RUMORS',payload:newrumors})

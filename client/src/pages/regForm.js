@@ -48,7 +48,7 @@ useEffect(()=>{
        
         try {
           
-            const res = await axios.post('https://backendrumors.onrender.com/api/auth/register',information)
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`,information)
              const otherJson = await res.data
            
             
@@ -69,7 +69,7 @@ useEffect(()=>{
               
               
                     try {
-                    const response = await axios.get('https://backendrumors.onrender.com/api/auth/users')
+                    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/users`)
                     const allusers = await response.data
                    
                     setAllUsername(allusers)

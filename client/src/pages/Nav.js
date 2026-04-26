@@ -18,7 +18,7 @@ const Navbar = () => {
     e.preventDefault()
     dispatch({type:"SUCCESS"})
     try {
-      const res = await axios.post("https://backendrumors.onrender.com/api/auth/logout")
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/logout`)
       
       dispatch({type:"LOGOUT",payload:res.data})
       setMenuOpen(false)
