@@ -17,9 +17,7 @@ import likesrouter from './routes/likesroutes.js';
 const app = express()
 
 
-app.use(cors({
-    origin:'https://onlythefree.vercel.app'
-    }))
+app.use(cors())
 const upload = multer({dest:'uploads/'})
 dotenv.config()
 
