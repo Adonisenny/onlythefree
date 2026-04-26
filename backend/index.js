@@ -18,7 +18,7 @@ const app = express()
 
 
 app.use(cors({
-    origin:'*'
+    origin:'https://onlythefree.vercel.app'
     }))
 const upload = multer({dest:'uploads/'})
 dotenv.config()
