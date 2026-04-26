@@ -32,7 +32,7 @@ const [activereplyid,setActiveReplyid] =useState(null)
         try {
             const myComments = {thecomments,postedBy,postId,userId}
          
-            const res = await axios.post('https://backendrumors.onrender.com/api/comments',myComments)
+            const res = await axios.post('http://localhost:7000/api/comments',myComments)
             const otherJson = await res.data
            setTheComments('')
                dispatch2({type:'CREATE_COMMENTS',payload:otherJson})
@@ -80,7 +80,7 @@ const [activereplyid,setActiveReplyid] =useState(null)
       
       
             try {
-            const response = await fetch(`https://backendrumors.onrender.com/api/comments/${postId}`)
+            const response = await fetch(`http://localhost:7000/api/comments/${postId}`)
             
             const comms = await response.json()
           

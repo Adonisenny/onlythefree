@@ -23,7 +23,7 @@ const Home = () => {
     useEffect(() => {
         const fetchit = async() => {
            try {
-            const response = await fetch("https://backendrumors.onrender.com/api/rumors")
+            const response = await fetch("http://localhost:7000/api/rumors")
            
             const newrumors = await response.json()
             
