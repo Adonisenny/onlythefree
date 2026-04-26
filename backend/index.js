@@ -18,7 +18,7 @@ const app = express()
 
 
 app.use(cors({
-    origin:'https://onlythefree.vercel.app',
+   origin: /\.vercel\.app$/,
     credentials:true
     }))
 const upload = multer({dest:'uploads/'})
