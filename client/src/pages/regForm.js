@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import Notification from "./Notifications";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 
 
 const Regform = () => {
@@ -160,15 +160,7 @@ value={password}
 type={showPassword ? 'text':'password'}
 
 />
-{/*the eyes */}
 
-<span 
-onClick={handleShow}
-className="password-toggle-icon left-[312px] top-[52%] md:top-[50%] md:left-[765px]"
-
-><i>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
-
-</span>
 
 
 
