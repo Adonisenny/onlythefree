@@ -6,7 +6,6 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 import Notification from "./Notifications";
 
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 
@@ -109,13 +108,7 @@ value={password}
 
 
 />
-<span 
-onClick={handleShow}
-className="password-toggle-icon left-[308px] top-[48%] md:top-[45%] md:left-[765px]"
 
-><i>{showpassword ? <FaEyeSlash /> : <FaEye />}</i>
-
-</span>
          
 <Link onClick={handleSubmit} className="link"><span>
 
