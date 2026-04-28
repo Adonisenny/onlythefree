@@ -192,7 +192,7 @@ style={{"borderRadius":"4px","color":"white"}}
         <CommentContent key={child._id} comment={child}  setActiveReplyid={setActiveReplyid} activereplyid={activereplyid} />
       ))}
 {visibleCount < comment.children.length && (
-  <button onClick={() =>setVisibleCount(prev => prev +2 )}  className="bg-slate-600 text-white p-2"> show more replies</button>
+  <button onClick={() =>setVisibleCount(prev => prev +2 )}  className="bg-slate-600 text-white p-2"> more replies</button>
 )}
       </div>
     </div>
