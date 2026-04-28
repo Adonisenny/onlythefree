@@ -132,13 +132,23 @@ const HandleReply = () => {
         
     
     return (  
-      <div className= "cursor-pointer" onClick={()=> setShowReply(prev => !prev)} >
+      <div className= "cursor-pointer" >
       {activereplyid==null &&
       <div className='workout-details2' >
       {deletedPost && <p className='fixed top-[60px] left-[360px] p-2 rounded-md text-black bg-slate-800'>comment deleted</p>}
 
         <i className="absolute  right-[12px] bottom-[1px]  bg-slate-800 rounded-[12px] p-[4px] text-white">@{comment?.postedBy}</i>
         <p>{comment?.thecomments}</p> 
+   {comment.children?.length > 0 && (
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      setShowReply(prev => !prev);
+    }}
+    className="text-xs text-blue-400"
+  >
+    {showReplies ? "Hide replies" : `View replies (${comment.children.length})`}
+  </button>
        <br/>
    
       <span className='span2' style={color ? mystyle:mystyles}><button onClick={likeHandler}><FaThumbsUp size={14} style={color ? mystyle:mystyles} /></button></span>
@@ -177,7 +187,7 @@ style={{"borderRadius":"4px","color":"white"}}
     <div style={{marginLeft:"20px"}}>
 <div>
       {comment.children?.map(child=> (
-        <CommentContent key={child._id} comment={child}  />
+        <CommentContent key={child._id} comment={child}  setActiveReplyid={setActiveReplyid} activereplyid={activereplyid} />
       ))}
       </div>
     </div>
