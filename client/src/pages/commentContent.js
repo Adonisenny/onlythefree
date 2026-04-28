@@ -4,6 +4,7 @@ import { useCommentContext } from "../Hooks/useCommentContext";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authcontext";
 import { FaComment } from "react-icons/fa";
+import '../MycssPages/commentcss.css'
 
 const CommentContent = ({comment,setActiveReplyid,activereplyid}) => {
 
@@ -161,7 +162,7 @@ const HandleReply = () => {
 
 
       <button onClick={(e)=>{e.stopPropagation(); HandleReply()}}  className="absolute left-[45px] bottom-[12px]" ><FaComment size={14}  className="text-stone-800"/></button>
-      <p className="absolute bottom-[7px] left-[130px]">{`${day} ${monthName} ${year}`}</p>
+      <p className="absolute bottom-[7px] left-[225px]">{`${day} ${monthName} ${year}`}</p>
     </div>}
 
 { activereplyid===comment?._id &&
@@ -192,7 +193,7 @@ style={{"borderRadius":"4px","color":"white"}}
         <CommentContent key={child._id} comment={child}  setActiveReplyid={setActiveReplyid} activereplyid={activereplyid} />
       ))}
 {visibleCount < comment.children.length && (
-  <button onClick={() =>setVisibleCount(prev => prev +2 )}  className="bg-slate-600 text-white p-2"> more replies</button>
+  <button onClick={() =>setVisibleCount(prev => prev +2 )}  className="load-more-btn"> show more</button>
 )}
       </div>
     </div>
