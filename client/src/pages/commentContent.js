@@ -16,8 +16,8 @@ const CommentContent = ({comment,setActiveReplyid,activereplyid}) => {
   const [deletedPost,SetDeletedPost] = useState(false)
   const[showReplies,setShowReply] =useState(false)
   const myusername = user?.username
-  
-const [replyText,setReplyText]  =useState('')
+  const [visibleCount,setVisibleCount] = useState(2)
+  const [replyText,setReplyText]  =useState('')
 
      const mystyle ={
         backgroundColor:"#0F172A",
@@ -145,7 +145,8 @@ const HandleReply = () => {
       e.stopPropagation();
       setShowReply(prev => !prev);
     }}
-    className="text-xs text-blue-400"
+  className="text-xs text-slate-800 bg-white absolute rounded-md p-1  left-[100px] top-[75px]"
+
   >
     {showReplies ? "Hide replies" : `View replies (${comment.children.length})`}
   </button>
@@ -187,9 +188,12 @@ style={{"borderRadius":"4px","color":"white"}}
 {showReplies && comment.children?.length >0 && (
     <div style={{marginLeft:"20px"}}>
 <div>
-      {comment.children?.map(child=> (
+      {comment.children?.slice(0,visibleCount).map(child=> (
         <CommentContent key={child._id} comment={child}  setActiveReplyid={setActiveReplyid} activereplyid={activereplyid} />
       ))}
+{visibleCount < comment.children.length && (
+  <button onClick={() =>setVisibleCount(prev => prev +2 )}  className="bg-slate-600 text-white p-2"> show more replies</button>
+)}
       </div>
     </div>
 )}
