@@ -15,3 +15,11 @@
      box-shadow: 2px 2px 12px rgba(0,0,0,0.8); 
     border-radius: 14px;
   }
+.load-more-btn:hover {
+  color: #e2e8f0; /* lighter on hover */
+  text-decoration: underline;
+}
+
+.load-more-btn:active {
+  transform: scale(0.97);
+}
