@@ -149,6 +149,7 @@ const HandleReply = () => {
   >
     {showReplies ? "Hide replies" : `View replies (${comment.children.length})`}
   </button>
+    )}
        <br/>
    
       <span className='span2' style={color ? mystyle:mystyles}><button onClick={likeHandler}><FaThumbsUp size={14} style={color ? mystyle:mystyles} /></button></span>
