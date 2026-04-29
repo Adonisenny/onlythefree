@@ -6,7 +6,8 @@ import CreateForm from "./pages/Form";
 
 import Regform from "./pages/regForm";
 import Loginform from "./pages/LoginForm";
-
+import { useContext } from "react";
+import { AuthContext } from "./Context/authcontext";
 import Comments from "./pages/comments";
 
 
@@ -20,7 +21,7 @@ import Logoutpage from "./pages/logoutpage";
 
 
 function App() {
- 
+  const {user} = useContext(AuthContext)
   return (
    <>
    <div>
@@ -33,7 +34,7 @@ function App() {
     <Routes>
 <Route 
 path="/"
-element = {<Home />}
+element = {user ? <Home /> : <Loginform />}
 />
 
 <Route 
@@ -58,11 +59,6 @@ path="/comments/:_id"
 element={<Comments/>}
 
 />
-
-
-
-
-
 
 <Route 
 path="/profile/likes/:_id"
