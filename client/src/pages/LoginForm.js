@@ -51,7 +51,7 @@ const Loginform = () => {
 
 
         } catch (error) {
-            setError("Something went wrong")
+            setError("username or password incorrect")
            
         }
     }
@@ -118,7 +118,7 @@ value={password}
             <span></span>
             Submit</Link>
 </form>
-{/* {Error &&  <p style={{"backgroundColor":"white","color":"red","paddingLeft":"30px","paddingTop":"15px",'paddingBottom':'15px','borderRadius':'8px'}}>{Error}</p>} */}
+ {Error &&  <p style={{"backgroundColor":"white","color":"red","paddingLeft":"30px","paddingTop":"15px",'paddingBottom':'15px','borderRadius':'8px'}}>{Error}</p>}
 <p>If you are not registered <Link to='/registration' className='reglink'>Register.</Link></p>
 </div>
 </div>
