@@ -14,7 +14,7 @@ const RenderNavbar = ({children}) => {
 
 useEffect(() => {
 
-    if(profilepath === 'login' || profilepath==='registration' ||profilepath==='profile' || messagepath ==='directmessage'){
+    if(profilepath === 'login' || profilepath==='registration' ||profilepath==='profile' || messagepath ==='directmessage' || profilepath ===''){
        
         setShowNavbar(false)
     }else{
