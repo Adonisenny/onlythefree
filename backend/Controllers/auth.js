@@ -32,7 +32,7 @@ export const login = async(req,res,next) => {
         if(!User) return next(ErrorHandler(404, 'user does not exist'))
         const isPasswordCorrect = await bcrypt.compare(req.body.password, User.password)
         if(!isPasswordCorrect) return next(ErrorHandler(400, 'Password or username incorrect'))
-        const token = jwt.sign({id:user._id,isAdmin:User.isAdmin}, process.env.mystash)
+        const token = jwt.sign({id:User._id,isAdmin:User.isAdmin}, process.env.mystash)
         const {password,isAdmin, ...otherdetails} =User._doc;
         res.cookie('access_token', token,{
             httpOnly:true,
