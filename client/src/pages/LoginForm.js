@@ -31,7 +31,10 @@ const Loginform = () => {
        
         try {
           
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`,loginfo)
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`,loginfo,{
+            withCredentials:true
+            
+            })
              const otherJson =  res.data
            
             
