@@ -21,15 +21,17 @@ useEffect(() => {
         setShowNavbar(true)
     }
     },[profilepath,messagepath])
-    // useEffect(() => {
+   
 
-    //     if(messagepath === 'directmessage'){
+     useEffect(() => {
+
+        if(profilepath === ''){
            
-    //         setShowNavbar(false)
-    //     }else{
-    //         setShowNavbar(true)
-    //     }
-    //     },[messagepath])
+            setShowNavbar(true)
+        }else{
+            setShowNavbar(false)
+        }
+        },[profilepath])
       
         
    
