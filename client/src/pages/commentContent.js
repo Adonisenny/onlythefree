@@ -152,7 +152,7 @@ const HandleReply = () => {
       <span className='span2' style={color ? mystyle:mystyles}><button onClick={likeHandler}><FaThumbsUp size={14} style={color ? mystyle:mystyles} /></button></span>
      <p className="absolute left-[38px] bottom-2">{like}</p>
     
-      <span> <button  onClick={handleDelete} disabled={isdisabled} ><FaTrash size={14}  className="text-stone-800" /></button></span>
+      <span> <button  onClick={handleDelete} ><FaTrash size={14}  className="text-stone-800" /></button></span>
 
 
 
