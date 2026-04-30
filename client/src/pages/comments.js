@@ -104,6 +104,8 @@ const [activereplyid,setActiveReplyid] =useState(null)
 
 
     return ( 
+      <div>
+       <Link to='/' className='text-white'>onlythefree</Link>
         <div className="mt-8">
           {activereplyid==null &&
         <form className="text-center ">
@@ -129,6 +131,7 @@ style={{"borderRadius":"4px","color":"white"}}
 ))}
 </div>
 </div>
+  </div>
 
      );
 }
