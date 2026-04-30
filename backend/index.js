@@ -18,7 +18,7 @@ const app = express()
 
 
 app.use(cors({
-   origin:'*',
+   origin:'https://onlyfree-sandy.vercel.app',
   credentials:true
 
     }))
