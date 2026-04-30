@@ -13,7 +13,6 @@ const CommentContent = ({comment,setActiveReplyid,activereplyid}) => {
   const [like, setLike] = useState(comment?.likes?.length);
   const [isLiked, setIsLiked] = useState(false);
   const [color,setColor] = useState(false)
-  const [isdisabled,setIsDisabled] =useState(false)
   const [deletedPost,SetDeletedPost] = useState(false)
   const[showReplies,setShowReply] =useState(false)
   const myusername = user?.username
@@ -95,11 +94,7 @@ const HandleReply = () => {
       }, [user?._id, comment?.likes]);
 
 
-      useEffect(() => {
-        if(myusername !==comment?.postedBy ){
-          setIsDisabled(true)
-        }
-      },[myusername,comment.postedBy])
+      
     
 
       useEffect(() => {
@@ -179,7 +174,7 @@ style={{"borderRadius":"4px","color":"white"}}
 </textarea>
 <br />
 <div className="flex justify-center">
-<button type="submit"  disabled={isdisabled} className="text-[10px] bg-slate-800 text-white" >comment</button>
+<button type="submit" className="text-[10px] bg-slate-800 text-white" >comment</button>
 </div>
 </form>
 }
