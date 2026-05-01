@@ -36,6 +36,8 @@ export const login = async(req,res,next) => {
         const {password,isAdmin, ...otherdetails} =User._doc;
         res.cookie('access_token', token,{
             httpOnly:true,
+            samesite:'lax',
+            secure:false
         }).
         status(200).json(otherdetails)
     } catch (error) {
