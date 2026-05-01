@@ -87,7 +87,7 @@ const [activereplyid,setActiveReplyid] =useState(null)
           
          
              dispatch2({type:'SET_COMMENTS',payload:comms})
-             console.log(comms)
+             
            
         
            } catch (error) {
