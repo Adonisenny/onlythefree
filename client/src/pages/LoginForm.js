@@ -73,14 +73,7 @@ const handleShow =() => {
     return (  
         <>
          {poping && <Notification message="Logged in successfully!" onClose={closeNotify} />}
-         
-         
-         
-         onClose={closeNotify} />}
-
-
-
-        
+                 
 
 
 <div className="body">
