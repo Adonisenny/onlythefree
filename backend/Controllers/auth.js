@@ -36,7 +36,7 @@ export const login = async(req,res,next) => {
         const {password,isAdmin, ...otherdetails} =User._doc;
         res.cookie('access_token', token,{
             httpOnly:true,
-            samesite:'lax',
+            sameSite:'lax',
             secure:false
         }).
         status(200).json(otherdetails)
@@ -47,8 +47,9 @@ export const login = async(req,res,next) => {
 export const logout = async(req,res,next)=>{
     try {
         res.clearCookie("access_token", {
-            sameSite:"none",
-            secure:true
+            sameSite:"lax",
+            secure:false,
+            httpOnly:true
         }).status(200).json("You have been logged out")
     } catch (error) {
         res.status(500).json({error:"couldn't logout"})
